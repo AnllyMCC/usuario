@@ -6,9 +6,8 @@ const cors = require('cors');
 require('./driver/mongo-connection');
 
 const usersRouter = require('./routes/users-routes');
-const { request } = require('http');
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
