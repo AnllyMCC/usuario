@@ -9,11 +9,9 @@
   },
   "author": "Anlly",
   "license": "ISC",
-
   "devDependencies": {
     "nodemon": "^2.0.13"
   },
-  
   "dependencies": {
     "dotenv": "^10.0.0",
     "bcryptjs": "^2.4.3",
