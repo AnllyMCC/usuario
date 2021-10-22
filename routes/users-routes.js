@@ -1,23 +1,27 @@
 const express = require('express');
+const { validateUser } = require('./../middlewares/validate-user')
+const { validateRol } = require('./../middlewares/validate-rol')
+
+
+
+
 const { 
     createUser,
     readUser,
-    updateUser,
-    deleteUser,
+    authUser
 } = require('./../controllers/users-controllers');
+const { validateRol } = require('../middlewares/validate-rol');
 
 //Router
 const router = express.Router();
 
-router.post('/', createUser);
+router.post('/',[validateUser, validateRol], createUser);
 
 router.get('/', readUser);
 
 router.get('/:id', readUser)
 
-router.patch('/:id', updateUser);
-
-router.delete('/:id', deleteUser);
+router.post('/auth/', authUser);
 
 //GET, POST, PATCH, DELETE > users
 
