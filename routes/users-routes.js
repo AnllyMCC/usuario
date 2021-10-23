@@ -1,28 +1,25 @@
 const express = require('express');
-const { validateUser } = require('./../middlewares/validate-user')
-const { validateRol } = require('./../middlewares/validate-rol')
-
-
-
-
-const { 
-    createUser,
-    readUser,
-    authUser
+const { validateUser } = require('../middlewares/validate-user');
+const {
+  createUser,
+  readUsers,
+  readUserData,
+  authUser,
+  authWithGoogle,
 } = require('./../controllers/users-controllers');
-const { validateRol } = require('../middlewares/validate-rol');
 
-//Router
+// Router
 const router = express.Router();
 
-router.post('/',[validateUser, validateRol], createUser);
+router.post('/', createUser);
 
-router.get('/', readUser);
+router.get('/', readUsers);
 
-router.get('/:id', readUser)
+router.get('/me', [validateUser], readUserData);
+
+router.get('/:id', readUsers);
 
 router.post('/auth/', authUser);
-
-//GET, POST, PATCH, DELETE > users
+router.post('/auth/google', authWithGoogle);
 
 module.exports = router;

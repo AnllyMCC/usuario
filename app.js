@@ -7,23 +7,19 @@ require('./driver/mongo-connection');
 
 const usersRouter = require('./routes/users-routes');
 
-
 const port = process.env.PORT || 8080;
 const app = express();
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
 // routes // controllers // models
 
 app.use('/api/users', usersRouter);
 
-app.get('*', (request, response) => {
-    return response.send('Not found!');
-});
+
 
 app.listen(port, function () {
-    console.log(chalk.green(`El servidor está listo en el puerto: ${port}!`))    
-});
-
+  console.log(chalk.green(`El servidor está listo en el puerto: ${port}!`));
+}); // 3000 // 0000~25000
 
